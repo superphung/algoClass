@@ -1,11 +1,40 @@
-//1. Write a function that loops through the numbers n down to 0. If you haven't done so try using a while loop to do this.
+module.exports = {
+  loopDown,
+  exponent,
+  multiplier,
+  reverse
+}
 
-//2. Next, try looping just like above except using recursion
+// 1. Write a function that loops through the numbers n down to 0. If you haven't done so try using a while loop to do this.
 
-//3.Write a function 'exponent' that takes two arguments base, and expo, uses a while loop to return the exponenet value of the base.
+// 2. Next, try looping just like above except using recursion
+function loopDown (n) {
+  if (n === 0) {
+    return n
+  }
+  return n - 1
+}
+// 3.Write a function 'exponent' that takes two arguments base, and expo, uses a while loop to return the exponenet value of the base.
 
-//4. Write a function 'RecursiveExponent' that takes two arguments base, and expo, recursively returns exponent value of the base.
-
-//5. Write a function 'recursiveMultiplier' that takes two arguments, 'arr and num', and multiplies each arr value into by num and returns an array of the values.
-
-//6. Write a function 'recursiveReverse' that takes an array and uses recursion to return its contents in reverse
+// 4. Write a function 'RecursiveExponent' that takes two arguments base, and expo, recursively returns exponent value of the base.
+function exponent (base, expo) {
+  if (expo === 1) {
+    return base
+  }
+  return base * exponent(base, expo - 1)
+}
+// 5. Write a function 'recursiveMultiplier' that takes two arguments, 'arr and num', and multiplies each arr value into by num and returns an array of the values.
+function multiplier (arr, num) {
+  if (arr.length === 0) {
+    return []
+  }
+  const value = arr.shift()
+  return [value * num, ...multiplier(arr, num)]
+}
+// 6. Write a function 'recursiveReverse' that takes an array and uses recursion to return its contents in reverse
+function reverse (arr) {
+  if (arr.length === 0) {
+    return []
+  }
+  return [arr.pop(), ...reverse(arr)]
+}
